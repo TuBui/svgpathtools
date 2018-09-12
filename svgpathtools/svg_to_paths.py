@@ -185,12 +185,17 @@ def svg2paths(svg_file_location,
 
     if return_svg_attributes:
         svg_attributes = dom2dict(doc.getElementsByTagName('svg')[0])
-        doc.unlink()
-        path_list = [parse_path(d) for d in d_strings]
+    doc.unlink()
+    path_list = []
+    for d in d_strings:
+      try:
+        path_list.append(parse_path(d))
+      except Exception as e:
+        print('Warning! {} - {} at {}. Omit a path.'.format(type(e), e, svg_file_location))
+        continue
+    if return_svg_attributes:
         return path_list, attribute_dictionary_list, svg_attributes
     else:
-        doc.unlink()
-        path_list = [parse_path(d) for d in d_strings]
         return path_list, attribute_dictionary_list
 
 
