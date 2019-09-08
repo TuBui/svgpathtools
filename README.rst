@@ -2,6 +2,9 @@
 svgpathtools
 ============
 
+This repo is folked from mathandy/svgpathtools fixing several bugs when
+reading some unusual svgs. 
+
 svgpathtools is a collection of tools for manipulating and analyzing SVG
 Path objects and Bézier curves.
 

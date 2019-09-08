@@ -1874,7 +1874,7 @@ class Path(MutableSequence):
 
         lengths = [each.length(error=error, min_depth=min_depth) for each in
                    self._segments]
-        self._length = sum(lengths)
+        self._length = sum(lengths) + np.finfo(np.float32).eps
         self._lengths = [each/self._length for each in lengths]
 
     def point(self, pos):
@@ -1952,6 +1952,8 @@ class Path(MutableSequence):
         return self.start == self.end
 
     def _is_closable(self):
+	if len(self) == 0:
+            return True
         end = self[-1].end
         for segment in self:
             if segment.start == end:
