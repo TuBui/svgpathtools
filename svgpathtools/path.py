@@ -1952,7 +1952,7 @@ class Path(MutableSequence):
         return self.start == self.end
 
     def _is_closable(self):
-	if len(self) == 0:
+        if len(self) == 0:
             return True
         end = self[-1].end
         for segment in self:
