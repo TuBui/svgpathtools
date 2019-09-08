@@ -1874,7 +1874,7 @@ class Path(MutableSequence):
 
         lengths = [each.length(error=error, min_depth=min_depth) for each in
                    self._segments]
-        self._length = sum(lengths) + np.finfo(np.float32).eps
+        self._length = sum(lengths)
         self._lengths = [each/self._length for each in lengths]
 
     def point(self, pos):
